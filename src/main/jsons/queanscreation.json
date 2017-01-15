@@ -1,0 +1,32 @@
+[
+  {
+    "ans": "largest  railway station",
+    "difficultLevel": 1,
+    "opt1": "largest railway station",
+    "opt2": "longest railway station",
+    "opt3": "highest railway station",
+    "opt4": "None of the above",
+    "question": "Grand Central Terminal, Park Avenue, New York is the world's"
+  }, 
+
+{
+    "ans": "Insects",
+    "difficultLevel": 1,
+    "opt1": "Behavior of human beings",
+    "opt2": "Insects",
+    "opt3": "The origin and history of technical and scientific terms",
+    "opt4": "The formation of rocks",
+    "question": "Entomology is the science that studies"
+  },
+
+{
+    "ans": "All of the above",
+    "difficultLevel": 1,
+    "opt1": "Physics and Chemistry",
+    "opt2": "Physiology or Medicine",
+    "opt3": "Literature, Peace and Economics",
+    "opt4": "All of the above",
+    "question": "For which of the following disciplines is Nobel Prize awarded?"
+  }
+
+]

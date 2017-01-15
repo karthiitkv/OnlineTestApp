@@ -6,12 +6,14 @@ package org.kvkit.hibernate;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.kvkit.model.Marks;
+import org.kvkit.model.QuesAns;
 import org.kvkit.model.Users;
 
 /**
@@ -95,6 +97,29 @@ public class QueNAnsHibernate {
         try {
             tx = session.beginTransaction();
             session.save(marks);
+            tx.commit();
+            System.out.println("Marks Saved");
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+    
+    public void addQueAns(List<QuesAns> quesAnss) {
+    	factory = HibernateUtil.getSessionFactory();
+        System.out.println("In quesAnss Save Method");
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Iterator<QuesAns> itr = quesAnss.iterator();
+            while(itr.hasNext()) {
+            	session.save(itr.next());
+            }
             tx.commit();
             System.out.println("Marks Saved");
         } catch (HibernateException e) {

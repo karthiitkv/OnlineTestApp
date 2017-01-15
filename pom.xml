@@ -82,8 +82,11 @@
     <version>5.1.6</version>
 </dependency>
 		
-		<!-- uncomment this to get JSON support <dependency> <groupId>org.glassfish.jersey.media</groupId> 
-			<artifactId>jersey-media-moxy</artifactId> </dependency> -->
+		<!-- uncomment this to get JSON support  -->
+		<dependency> 
+			<groupId>org.glassfish.jersey.media</groupId> 
+			<artifactId>jersey-media-moxy</artifactId> 
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
 		<dependency>
