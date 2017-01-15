@@ -162,16 +162,18 @@ function formatTime(time) {
             {
             $('input[type=radio]').prop("disabled",true);
             Example2.Timer.stop();
-                for(var i=0;i<10;i++)
-                    {
+                	//for(var i=0;i<10;i++)
+                		i=0;
+                    do {
                         selected=$('input:radio[name=ans'+i+']:checked').val();
                         ans=$('input:hidden[name=selans'+i+']').val();
                         //alert(selected +" == "+ans);
-                        if(selected==ans)
+                        if(selected != undefined && selected==ans)
                         {
-                            marks++;    
+                            marks++;
                         }
-                    }
+                        i++;
+                    } while(selected != undefined)
                     var xmlhttp;
                     xmlhttp=new XMLHttpRequest();
                     var dispatch="setMarks";
