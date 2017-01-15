@@ -1,4 +1,4 @@
-package org.kvkit.action;
+package org.kvkit.mail;
 
 public final class MailProperties {
 

@@ -19,6 +19,7 @@ import org.apache.struts.action.ActionMapping;
 import org.kvkit.form.LoginForm;
 import org.kvkit.form.QueNAns;
 import org.kvkit.hibernate.QueNAnsHibernate;
+import org.kvkit.mail.SendMailG3;
 import org.kvkit.model.Marks;
 import org.kvkit.model.QuesAns;
 
