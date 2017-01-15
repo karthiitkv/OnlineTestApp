@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.kvkit.action;
+package org.kvkit.mail;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;

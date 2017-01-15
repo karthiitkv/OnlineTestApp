@@ -1,4 +1,4 @@
-package org.kvkit.action;
+package org.kvkit.mail;
 
 import java.util.Properties;
 
