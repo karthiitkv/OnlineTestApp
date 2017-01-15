@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- MySQL DB Properties -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> 
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/online_test</property> 
+		<property name="hibernate.connection.username">root</property> 
+		<property name="hibernate.connection.password">root</property>
+		<!-- <property name="hibernate.connection.url">jdbc:mysql://127.3.94.2:3306/online_test</property> 
+		<property name="hibernate.connection.username">adminQgmhYCK</property> 
+		<property name="hibernate.connection.password">16Ycy4KnaMBT</property> 
+	 	 -->
+
+		<!-- SQLite DB Properties -->
+		<!-- <property name="dialect">org.hibernate.dialect.SQLiteDialect</property>
+		<property name="connection.driver_class">org.sqlite.JDBC</property>
+		<property name="connection.url">jdbc:sqlite:createdkarthi.sqlite</property>
+		<property name="connection.username"></property>
+		<property name="connection.password"></property>-->
+
+		<!-- Hibernate properties -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.connection.autocommit">true</property>
+
+		<!-- important to specify c3p0 as your connection provider -->
+		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+
+		<!-- configuration for connection pool via c3p0 -->
+		<property name="c3p0.min_size">3</property>
+		<property name="c3p0.max_size">20</property>
+		<property name="c3p0.acquire_increment">1</property>
+		<property name="c3p0.max_statements">50</property>
+		<property name="c3p0.timeout">14400</property>
+		<property name="c3p0.idle_test_period">3600</property>
+
+		<!-- <property name="hibernate.connection.url">jdbc:mysql://mysql-medbill.j.layershift.co.uk/billing</property> 
+			<property name="hibernate.connection.username">root</property> <property 
+			name="hibernate.connection.password">qO8THeJYRG</property> -->
+
+		<mapping resource="org/kvkit/model/Marks.hbm.xml" />
+		<mapping resource="org/kvkit/model/QuesAns.hbm.xml" />
+		<mapping resource="org/kvkit/model/Users.hbm.xml" />
+	</session-factory>
+	<!-- <session-configuration> driver/connection info removed C3P0 Stuff <property 
+		name="hibernate.c3p0.acquire_increment">3</property> <property name="hibernate.c3p0.idle_test_period">14400</property> 
+		<property name="hibernate.c3p0.timeout">25200</property> <property name="hibernate.c3p0.max_size">15</property> 
+		<property name="hibernate.c3p0.min_size">3</property> <property name="hibernate.c3p0.max_statements">0</property> 
+		<property name="hibernate.c3p0.preferredTestQuery">select 1;</property> </session-configuration> -->
+
+</hibernate-configuration>

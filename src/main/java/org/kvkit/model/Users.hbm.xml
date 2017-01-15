@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 Oct, 2013 10:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.kvkit.model.Users" table="users" catalog="online_test">
+        <id name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+            <generator class="native" />
+        </id>
+        <property name="userName" type="string">
+            <column name="user_name" length="100" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" unique="true" />
+        </property>
+        <property name="joinedDate" type="date">
+            <column name="joined_date" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

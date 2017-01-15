@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 Oct, 2013 10:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.kvkit.model.QuesAns" table="ques_ans" catalog="online_test">
+        <id name="queId" type="java.lang.Integer">
+            <column name="que_id" />
+            <generator class="native" />
+        </id>
+        <property name="question" type="string">
+            <column name="question" length="1000" not-null="true" />
+        </property>
+        <property name="opt1" type="string">
+            <column name="opt1" length="300" />
+        </property>
+        <property name="opt2" type="string">
+            <column name="opt2" length="300" />
+        </property>
+        <property name="opt3" type="string">
+            <column name="opt3" length="300" />
+        </property>
+        <property name="opt4" type="string">
+            <column name="opt4" length="300" />
+        </property>
+        <property name="ans" type="string">
+            <column name="ans" length="45" />
+        </property>
+        <property name="difficultLevel" type="java.lang.Integer">
+            <column name="difficult_level" />
+        </property>
+        <property name="attempts" type="java.lang.Integer">
+            <column name="attempts" />
+        </property>
+        <property name="answered" type="java.lang.Integer">
+            <column name="answered" />
+        </property>
+    </class>
+</hibernate-mapping>

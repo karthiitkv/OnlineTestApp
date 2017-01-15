@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15 Oct, 2013 10:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.kvkit.model.Marks" table="marks" catalog="online_test">
+        <id name="marksId" type="java.lang.Integer">
+            <column name="marks_id" />
+            <generator class="native" />
+        </id>
+        <property name="userId" type="int">
+            <column name="user_id" not-null="true" unique="true" />
+        </property>
+        <property name="attendedDate" type="date">
+            <column name="attended_date" length="10" />
+        </property>
+        <property name="marks" type="java.lang.Integer">
+            <column name="marks" />
+        </property>
+        <property name="atendedMins" type="java.lang.Integer">
+            <column name="atended_mins" />
+        </property>
+    </class>
+</hibernate-mapping>

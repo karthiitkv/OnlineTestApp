@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Struts Tag Library Descriptors -->
+    <jsp-config>
+  <taglib>
+    <taglib-uri>http://struts.apache.org/tags-bean</taglib-uri>
+    <taglib-location>/META-INF/tld/struts-bean.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>http://struts.apache.org/tags-html</taglib-uri>
+    <taglib-location>/META-INF/tld/struts-html.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>http://struts.apache.org/tags-logic</taglib-uri>
+    <taglib-location>/META-INF/tld/struts-logic.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>http://struts.apache.org/tags-tiles</taglib-uri>
+    <taglib-location>/META-INF/tld/struts-template.tld</taglib-location>
+  </taglib>
+  </jsp-config>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/jsp/welcome.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
