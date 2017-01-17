@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,7 +32,7 @@ public class QueNAnsHibernate {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            col = session.createQuery("FROM QuesAns").list();
+            col = session.createQuery("FROM QuesAns where display=true").list();
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
@@ -41,8 +42,30 @@ public class QueNAnsHibernate {
         } finally {
             session.close();
         }
-    return col ;
-}
+        return col ;
+    }
+    
+    public Collection getAllQueNAns(String queryString) {
+    	System.out.println("Query - "+queryString);
+        Collection col = null;
+        factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            col = session.createQuery(queryString).list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return col ;
+    }
+    
     public HashMap getUserAndMarks(String name,String email)
     {
         HashMap map = new HashMap();
@@ -108,8 +131,8 @@ public class QueNAnsHibernate {
             session.close();
         }
     }
-    
-    public void addQueAns(List<QuesAns> quesAnss) {
+        
+    public void saveOrUpdateQueAns(List<QuesAns> quesAnss) {
     	factory = HibernateUtil.getSessionFactory();
         System.out.println("In quesAnss Save Method");
         Session session = factory.openSession();
@@ -118,8 +141,37 @@ public class QueNAnsHibernate {
             tx = session.beginTransaction();
             Iterator<QuesAns> itr = quesAnss.iterator();
             while(itr.hasNext()) {
-            	session.save(itr.next());
+            	session.saveOrUpdate(itr.next());
             }
+            tx.commit();
+            System.out.println("Marks Saved");
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+    
+    public void deleteQueAns(String queIds) {
+    	factory = HibernateUtil.getSessionFactory();
+        System.out.println("queIds value - "+queIds);
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            //Iterator<Integer> itr = queIds.iterator();
+            /*QuesAns que;
+            while(itr.hasNext()) {
+            	que = new QuesAns();
+            	que.setQueId(itr.next());
+            	session.delete(que);
+            }*/
+            org.hibernate.Query q = session.createQuery("delete QuesAns where queId = "+queIds);
+            q.executeUpdate();
+
             tx.commit();
             System.out.println("Marks Saved");
         } catch (HibernateException e) {

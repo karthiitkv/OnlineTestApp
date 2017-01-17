@@ -13,7 +13,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class QuesAns  implements java.io.Serializable {
 
 
-     private Integer queId;
+    
+
+	private Integer queId;
      private String question;
      private String opt1;
      private String opt2;
@@ -23,6 +25,7 @@ public class QuesAns  implements java.io.Serializable {
      private Integer difficultLevel;
      private Integer attempts;
      private Integer answered;
+     private Boolean display;
 
     public QuesAns() {
     }
@@ -114,9 +117,13 @@ public class QuesAns  implements java.io.Serializable {
         this.answered = answered;
     }
 
+    public Boolean getDisplay() {
+		return display;
+	}
 
-
-
+	public void setDisplay(Boolean display) {
+		this.display = display;
+	}
 }
 
 
