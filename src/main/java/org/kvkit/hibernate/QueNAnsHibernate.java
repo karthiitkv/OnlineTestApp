@@ -8,11 +8,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.kvkit.model.Marks;
 import org.kvkit.model.QuesAns;
 import org.kvkit.model.Users;
@@ -32,7 +32,7 @@ public class QueNAnsHibernate {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            col = session.createQuery("FROM QuesAns").list();
+            col = session.createQuery("FROM QuesAns where display=true").list();
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
@@ -42,8 +42,30 @@ public class QueNAnsHibernate {
         } finally {
             session.close();
         }
-    return col ;
-}
+        return col ;
+    }
+    
+    public Collection getAllQueNAns(String queryString) {
+    	System.out.println("Query - "+queryString);
+        Collection col = null;
+        factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            col = session.createQuery(queryString).list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return col ;
+    }
+    
     public HashMap getUserAndMarks(String name,String email)
     {
         HashMap map = new HashMap();
@@ -147,7 +169,7 @@ public class QueNAnsHibernate {
             	que.setQueId(itr.next());
             	session.delete(que);
             }*/
-            Query q = session.createQuery("delete QuesAns where queId = "+queIds);
+            org.hibernate.Query q = session.createQuery("delete QuesAns where queId = "+queIds);
             q.executeUpdate();
 
             tx.commit();

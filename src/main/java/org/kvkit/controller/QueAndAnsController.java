@@ -24,11 +24,20 @@ import org.kvkit.model.QuesAns;
 public class QueAndAnsController {
 	
 	QueNAnsHibernate qHiber = new QueNAnsHibernate();
+	String queryString = "FROM QuesAns";
 	
 	@Path("/getAllQueAns")
 	@GET
 	public List<QuesAns> getAllQueAns() {
-		Collection<QuesAns> queList = qHiber.getQueNAns();
+		Collection<QuesAns> queList = qHiber.getAllQueNAns(queryString);
+		System.out.println("queList --> "+queList.size());
+		return (List<QuesAns>) queList;
+	}
+	
+	@GET
+	@Path("/getDisplayQueAns/{displayFilter}")
+	public List<QuesAns> getDisplayQueAns(@PathParam(value="displayFilter") String displayFilter) {
+		Collection<QuesAns> queList = qHiber.getAllQueNAns(queryString + " where display = "+displayFilter);
 		System.out.println("queList --> "+queList.size());
 		return (List<QuesAns>) queList;
 	}
