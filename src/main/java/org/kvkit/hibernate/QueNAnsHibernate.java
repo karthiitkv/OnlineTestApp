@@ -12,6 +12,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.kvkit.model.Marks;
 import org.kvkit.model.QuesAns;
 import org.kvkit.model.Users;
@@ -108,8 +109,8 @@ public class QueNAnsHibernate {
             session.close();
         }
     }
-    
-    public void addQueAns(List<QuesAns> quesAnss) {
+        
+    public void saveOrUpdateQueAns(List<QuesAns> quesAnss) {
     	factory = HibernateUtil.getSessionFactory();
         System.out.println("In quesAnss Save Method");
         Session session = factory.openSession();
@@ -118,8 +119,37 @@ public class QueNAnsHibernate {
             tx = session.beginTransaction();
             Iterator<QuesAns> itr = quesAnss.iterator();
             while(itr.hasNext()) {
-            	session.save(itr.next());
+            	session.saveOrUpdate(itr.next());
             }
+            tx.commit();
+            System.out.println("Marks Saved");
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+    
+    public void deleteQueAns(String queIds) {
+    	factory = HibernateUtil.getSessionFactory();
+        System.out.println("queIds value - "+queIds);
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            //Iterator<Integer> itr = queIds.iterator();
+            /*QuesAns que;
+            while(itr.hasNext()) {
+            	que = new QuesAns();
+            	que.setQueId(itr.next());
+            	session.delete(que);
+            }*/
+            Query q = session.createQuery("delete QuesAns where queId = "+queIds);
+            q.executeUpdate();
+
             tx.commit();
             System.out.println("Marks Saved");
         } catch (HibernateException e) {

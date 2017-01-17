@@ -26,6 +26,9 @@
         <property name="ans" type="string">
             <column name="ans" length="45" />
         </property>
+        <property name="display" type="boolean">
+            <column name="display"/>
+        </property>
         <property name="difficultLevel" type="java.lang.Integer">
             <column name="difficult_level" />
         </property>
