@@ -79,10 +79,15 @@
 </dependency>
 		
 		<!-- uncomment this to get JSON support  -->
-		<dependency> 
+		<!-- <dependency> 
 			<groupId>org.glassfish.jersey.media</groupId> 
 			<artifactId>jersey-media-moxy</artifactId> 
-		</dependency>
+		</dependency> -->
+
+		<dependency>
+		  <groupId>org.glassfish.jersey.media</groupId>
+		  <artifactId>jersey-media-json-jackson</artifactId>
+		  </dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
 		<dependency>

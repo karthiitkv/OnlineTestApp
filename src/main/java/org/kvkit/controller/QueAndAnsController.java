@@ -1,7 +1,9 @@
 package org.kvkit.controller;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -28,18 +30,22 @@ public class QueAndAnsController {
 	
 	@Path("/getAllQueAns")
 	@GET
-	public List<QuesAns> getAllQueAns() {
+	public Map<String, List<QuesAns>> getAllQueAns() {
 		Collection<QuesAns> queList = qHiber.getAllQueNAns(queryString);
 		System.out.println("queList --> "+queList.size());
-		return (List<QuesAns>) queList;
+		Map<String, List<QuesAns>> result = new HashMap<>();
+		result.put("quesAns", (List<QuesAns>) queList);
+		return result;
 	}
 	
 	@GET
 	@Path("/getDisplayQueAns/{displayFilter}")
-	public List<QuesAns> getDisplayQueAns(@PathParam(value="displayFilter") String displayFilter) {
+	public Map<String, List<QuesAns>> getDisplayQueAns(@PathParam(value="displayFilter") String displayFilter) {
 		Collection<QuesAns> queList = qHiber.getAllQueNAns(queryString + " where display = "+displayFilter);
 		System.out.println("queList --> "+queList.size());
-		return (List<QuesAns>) queList;
+		Map<String, List<QuesAns>> result = new HashMap<>();
+		result.put("quesAns", (List<QuesAns>) queList);
+		return result;
 	}
 	
 	@Path("/addQueAns")
