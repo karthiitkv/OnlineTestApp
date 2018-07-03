@@ -1,0 +1,15 @@
+{
+  "quesAns": [
+    {
+      "queId": 6,
+      "ans": "Different",
+      "difficultLevel": 1,
+      "opt1": "Java",
+      "opt2": "Different",
+      "opt3": "Equalant",
+      "opt4": "Most likely",
+      "question": "Which of the following is true between Overloading and overriding",
+      "display": false
+    }
+  ]
+}

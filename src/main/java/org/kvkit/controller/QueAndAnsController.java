@@ -33,7 +33,7 @@ public class QueAndAnsController {
 	public Map<String, List<QuesAns>> getAllQueAns() {
 		Collection<QuesAns> queList = qHiber.getAllQueNAns(queryString);
 		System.out.println("queList --> "+queList.size());
-		Map<String, List<QuesAns>> result = new HashMap<>();
+		Map<String, List<QuesAns>> result = new HashMap<String, List<QuesAns>>();
 		result.put("quesAns", (List<QuesAns>) queList);
 		return result;
 	}
@@ -43,22 +43,22 @@ public class QueAndAnsController {
 	public Map<String, List<QuesAns>> getDisplayQueAns(@PathParam(value="displayFilter") String displayFilter) {
 		Collection<QuesAns> queList = qHiber.getAllQueNAns(queryString + " where display = "+displayFilter);
 		System.out.println("queList --> "+queList.size());
-		Map<String, List<QuesAns>> result = new HashMap<>();
+		Map<String, List<QuesAns>> result = new HashMap<String, List<QuesAns>>();
 		result.put("quesAns", (List<QuesAns>) queList);
 		return result;
 	}
 	
 	@Path("/addQueAns")
 	@PUT
-	public Response addQueAns(List<QuesAns> quesAnss) {
-		qHiber.saveOrUpdateQueAns(quesAnss);
+	public Response addQueAns(Map<String, List<QuesAns>> quesAnss) {
+		qHiber.saveOrUpdateQueAns(quesAnss.get("quesAns"));
 		return Response.created(null).entity("Object Created").build();
 	}
 	
 	@Path("/updateQueAns")
 	@POST
-	public Response updateQueAns(List<QuesAns> quesAnss) {
-		qHiber.saveOrUpdateQueAns(quesAnss);
+	public Response updateQueAns(Map<String, List<QuesAns>> quesAnss) {
+		qHiber.saveOrUpdateQueAns(quesAnss.get("quesAns"));
 		return Response.noContent().build();
 	}
 	
