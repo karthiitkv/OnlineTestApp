@@ -6,6 +6,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script type="text/javascript">
 var error="";
 function mailval()
@@ -170,7 +171,7 @@ a:hover
 </head>
 <body>
     <html:form action="/index" styleId="indexForm">
-<div class="whole">
+<div class="whole" ng-app="onlinetest" ng-controller="testCtrl">
 	<div class="header">
 			Self Assessment Test<sub></sub>	</div>
 	<div class="body">
@@ -189,9 +190,12 @@ a:hover
 			<div>
 				<b><h4>Enter the below details to proceed test</h4></b>
 				<table cellspacing="2">
-				<tr><td>Name:</td><td><input type="text" name="name" id="name"/></td></tr>
-				<tr><td>E-Mail:</td><td><input type="text" name="email" id="email"/></td></tr>
-                                <tr><td  colspan="2" align="centre"><input type="button" name="StartTest" style="align:center" value="Start Test" onclick="checkValues()"></input></td></tr>
+				<tr><td>{{label1}}</td><td><input type="text" name="name" id="name"/></td></tr>
+				<tr><td>{{label2}}</td><td><input type="text" name="email" id="email"/></td></tr>
+                <tr><td  colspan="2" align="centre"><input type="button" name="StartTest" style="align:center" value="Start Test" onclick="checkValues()"></input>
+                <input type="radio" ng-model="appuser" value="User" ng-change="changeLabel()">User</input>
+                <input type="radio" ng-model="appuser" value="Admin" ng-change="changeLabel()">Admin</input></td>
+                <td>{{name}}</td></tr>
 				<table>
 				
 				<br/>
@@ -212,5 +216,22 @@ a:hover
         <html:hidden property="dispatch" styleId="dispatch"/>
 </html:form>
 </body>
+<script>
+	angular.module("onlinetest", []).controller("testCtrl", function($scope) {
+		$scope.appuser = "User"
+		$scope.name = "Karthi";
+		changeLabel();
+		
+		$scope.changeLabel = function() {
+			if($scope.appuser == "User") {
+				$scope.label1 = "Name:";
+				$scope.label2 = "E-Mail:";
+			} else {
+				$scope.label1 = "Username:";
+				$scope.label2 = "Password:";
+			}
+		}
+	});
+</script>
 
 </html>
