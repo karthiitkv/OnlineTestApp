@@ -4,13 +4,13 @@
  */
 package org.kvkit.form;
 
-import javax.xml.bind.annotation.XmlRootElement;
+//import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Karthikeyan  
  */
-@XmlRootElement
+//@XmlRootElement
 public class QueNAns {
     
     private String question;

@@ -75,7 +75,7 @@
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
-    <version>5.1.6</version>
+    <version>8.0.25</version>
 </dependency>
 		
 		<!-- uncomment this to get JSON support  -->
@@ -169,6 +169,8 @@
 	<properties>
 		<jersey.version>2.16</jersey.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+     	<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
 	
 	<profiles>

@@ -5,9 +5,9 @@
 		<!-- MySQL DB Properties -->
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> 
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/online_test</property> 
+		<property name="hibernate.connection.url">jdbc:mysql://onlinetest.c1cwlvmwwa1y.us-east-2.rds.amazonaws.com:3306/online_test?characterEncoding=utf8</property> 
 		<property name="hibernate.connection.username">root</property> 
-		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.password">rootroot</property>
 		<!-- <property name="hibernate.connection.url">jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/online_test</property> 
 		<property name="hibernate.connection.username">adminFKpU88G</property> 
 		<property name="hibernate.connection.password">6Hj6MRFjYxZL</property> --> 
@@ -26,16 +26,16 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.connection.autocommit">true</property>
 
-		<!-- important to specify c3p0 as your connection provider -->
-		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<!-- important to specify c3p0 as your connection provider 
+		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>-->
 
-		<!-- configuration for connection pool via c3p0 -->
+		<!-- configuration for connection pool via c3p0 
 		<property name="c3p0.min_size">3</property>
 		<property name="c3p0.max_size">20</property>
 		<property name="c3p0.acquire_increment">1</property>
 		<property name="c3p0.max_statements">50</property>
 		<property name="c3p0.timeout">14400</property>
-		<property name="c3p0.idle_test_period">3600</property>
+		<property name="c3p0.idle_test_period">3600</property>-->
 
 		<!-- <property name="hibernate.connection.url">jdbc:mysql://mysql-medbill.j.layershift.co.uk/billing</property> 
 			<property name="hibernate.connection.username">root</property> <property 

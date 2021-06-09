@@ -50,13 +50,13 @@ public class SendMailG3 {
  
 		// Step3
 		System.out.println("\n\n 3rd ===> Get Session and Send mail");
-		Transport transport = getMailSession.getTransport("smtp");
+		/*Transport transport = getMailSession.getTransport("smtp");
  
 		// Enter your correct gmail UserID and Password
 		// if you have 2FA enabled then provide App Specific Password
 		transport.connect(MailProperties.SMTP_HOST_NAME, MailProperties.emailFromAddress, MailProperties.password);
 		transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
-		transport.close();
+		transport.close();*/
 	}
 
 }

@@ -144,7 +144,7 @@ public class QueNAnsHibernate {
             	session.saveOrUpdate(itr.next());
             }
             tx.commit();
-            System.out.println("Marks Saved");
+            System.out.println("saveOrUpdateQueAns");
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
@@ -173,7 +173,7 @@ public class QueNAnsHibernate {
             q.executeUpdate();
 
             tx.commit();
-            System.out.println("Marks Saved");
+            System.out.println("deleteQueAns");
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();

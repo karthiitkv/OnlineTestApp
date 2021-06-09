@@ -91,13 +91,13 @@ body
 	background-color:darkturquoise;
 	text-align:center;
 	font-family:"Times New Roman", times, sans-serif;
-	font-size:300%;
+	font-size:310%;
         padding :20px
 	/*text-shadow:5px 5px 5px blue;*/
 }
 .header sub
 {
-	font-size:20%;
+	font-size:40%;
 }
 
 .left
@@ -172,7 +172,8 @@ a:hover
     <html:form action="/index" styleId="indexForm">
 <div class="whole">
 	<div class="header">
-			Self Assessment Test<sub></sub>	</div>
+		Self Assessment Test <br/>
+		<sub> by Karthikeyan</sub></div>
 	<div class="body">
 		<div class="left">
 		<div class="leftcont">
@@ -208,7 +209,7 @@ a:hover
 		</div>
 	</div>
 </div>
-<div class="footer" style="width:100%">KVKIT &#9400; 2013</div>
+<div class="footer" style="width:100%">KVT Tech &#9400; 2013</div>
         <html:hidden property="dispatch" styleId="dispatch"/>
 </html:form>
 </body>
